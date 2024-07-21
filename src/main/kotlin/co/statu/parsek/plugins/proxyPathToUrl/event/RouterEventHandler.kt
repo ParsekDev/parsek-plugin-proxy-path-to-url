@@ -3,6 +3,7 @@ package co.statu.parsek.plugins.proxyPathToUrl.event
 import co.statu.parsek.api.annotation.EventListener
 import co.statu.parsek.api.config.PluginConfigManager
 import co.statu.parsek.api.event.RouterEventListener
+import co.statu.parsek.model.Route
 import co.statu.parsek.plugins.proxyPathToUrl.ProxyPathToUrlConfig
 import co.statu.parsek.plugins.proxyPathToUrl.ProxyPathToUrlPlugin
 import io.vertx.core.http.HttpClient
@@ -23,7 +24,9 @@ class RouterEventHandler(
         proxyPathToUrlPlugin.pluginBeanContext.getBean(HttpClient::class.java)
     }
 
-    override fun onBeforeCreateRoutes(router: Router) {
+    override fun onInitRouteList(routes: MutableList<Route>) {}
+
+    override fun onRouterCreate(router: Router) {
         val config = pluginConfigManager.config
 
         config.proxyConfigs.forEach { proxyConfig ->

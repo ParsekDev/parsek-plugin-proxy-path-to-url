@@ -27,7 +27,7 @@ dependencies {
     if (bootstrap) {
         compileOnly(project(mapOf("path" to ":Parsek")))
     } else {
-        compileOnly("com.github.StatuParsek:Parsek:2.3.0")
+        compileOnly("com.github.StatuParsek:Parsek:v2.4.0")
     }
 
     compileOnly(kotlin("stdlib-jdk8"))
