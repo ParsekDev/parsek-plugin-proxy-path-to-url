@@ -15,10 +15,8 @@ class CoreEventHandler(
 ) : CoreEventListener {
     override suspend fun onConfigManagerReady(configManager: ConfigManager) {
         val pluginConfigManager = PluginConfigManager(
-            configManager,
             proxyPathToUrlPlugin,
             ProxyPathToUrlConfig::class.java,
-            listOf()
         )
 
         proxyPathToUrlPlugin.pluginBeanContext.beanFactory.registerSingleton(
